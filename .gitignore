@@ -1,5 +1,21 @@
 /vendor
+<<<<<<< HEAD
 .env
 /node_modules
 /public/build
 /storage/*.key
+=======
+
+.env
+
+/node_modules
+
+/public/build
+
+/storage/*.key
+
+/storage/framework/cache/*
+/storage/framework/sessions/*
+/storage/framework/views/*
+/storage/logs/*
+>>>>>>> 03862b8 (Complete Personal Task Manager)
