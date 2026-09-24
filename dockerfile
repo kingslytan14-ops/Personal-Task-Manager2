@@ -1,6 +1,10 @@
+```dockerfile
 FROM php:8.2-apache
 
-RUN docker-php-ext-install pdo pdo_mysql
+RUN apt-get update \
+    && apt-get install -y unzip libzip-dev \
+    && docker-php-ext-install pdo pdo_mysql zip \
+    && rm -rf /var/lib/apt/lists/*
 
 RUN a2enmod rewrite
 
@@ -21,3 +25,4 @@ RUN sed -ri 's!/var/www/html!/var/www/html/public!g' \
 EXPOSE 80
 
 CMD ["apache2-foreground"]
+```
