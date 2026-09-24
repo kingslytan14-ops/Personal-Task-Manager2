@@ -1,3 +1,6 @@
+
+
+
 FROM php:8.2-apache
 
 RUN apt-get update \
@@ -15,11 +18,33 @@ COPY . .
 
 RUN composer install --no-dev --optimize-autoloader
 
+RUN mkdir -p storage/framework/cache \
+    storage/framework/sessions \
+    storage/framework/views \
+    storage/logs \
+    bootstrap/cache
+
+RUN printf '%s\n' \
+    'Options -Indexes' \
+    'RewriteEngine On' \
+    'RewriteCond %{REQUEST_FILENAME} !-d' \
+    'RewriteCond %{REQUEST_FILENAME} !-f' \
+    'RewriteRule ^ index.php [L]' \
+    > public/.htaccess
+
+RUN printf '%s\n' \
+    '<VirtualHost *:80>' \
+    '    DocumentRoot /var/www/html/public' \
+    '    <Directory /var/www/html/public>' \
+    '        AllowOverride All' \
+    '        Require all granted' \
+    '        DirectoryIndex index.php' \
+    '    </Directory>' \
+    '</VirtualHost>' \
+    > /etc/apache2/sites-available/000-default.conf
+
 RUN chown -R www-data:www-data storage bootstrap/cache \
     && chmod -R 775 storage bootstrap/cache
-
-RUN sed -ri 's!/var/www/html!/var/www/html/public!g' \
-    /etc/apache2/sites-available/*.conf
 
 EXPOSE 80
 
