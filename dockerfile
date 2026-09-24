@@ -1,4 +1,3 @@
-```dockerfile
 FROM php:8.2-apache
 
 RUN apt-get update \
@@ -25,4 +24,3 @@ RUN sed -ri 's!/var/www/html!/var/www/html/public!g' \
 EXPOSE 80
 
 CMD ["apache2-foreground"]
-```
