@@ -1,41 +1,25 @@
-# Personal Task Manager
+## System Screenshots
 
-## Student Information
-- Project Code: WST21-PM-2026-SF
-- Student Name: Kingsly Bryan A. Tan
-- Course & Year: BSIT - 2ndyear
-- Database Used: MySQL
-- Local Environment: XAMPP (Apache and MySQL)
+### Dashboard
 
-## Features
-- Add Task
-- View Tasks
-- Edit Task
-- Delete Task
-- Update Status (Pending / Completed)
-- Task description and due date
-- Dashboard counters
+![Dashboard](screenshots/dashboard.png)
 
-## Technologies
-Laravel, PHP, MySQL, Blade, HTML, CSS
+### Add New Task
 
-## Setup
-1. Install XAMPP and Composer.
-2. Start Apache and MySQL in XAMPP.
-3. Open phpMyAdmin and create a database named `task_manager`.
-4. Copy `.env.example` to `.env`.
-5. Run:
+![Add Task](screenshots/add-task.png)
 
-```bash
-composer install
-php artisan key:generate
-php artisan migrate
-php artisan serve
-```
+### Task List
 
-6. Open `http://127.0.0.1:8000`.
+![Task List](screenshots/task-list.png)
 
-## Laravel Flow
-Routes -> Controller -> Model -> Database -> Blade
+### Edit Task
 
-The `vendor` folder and `.env` file are excluded from GitHub. Composer generates `vendor`, and `.env` contains local configuration.
+![Edit Task](screenshots/edit-task.png)
+
+### Completed Task
+
+![Completed Task](screenshots/completed-task.png)
+
+### Delete Task
+
+![Delete Task](screenshots/delete-task.png)
