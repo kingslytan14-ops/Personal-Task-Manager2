@@ -18,10 +18,7 @@ Personal Task Manager is a simple Laravel project that I made to help manage tas
 * View Task
 * Edit Task
 * Delete Task
-* Change Status
-* Add Description
-* Add Due Date
-* Dashboard Counters
+* Update Status
 
 ## Technologies Used
 
