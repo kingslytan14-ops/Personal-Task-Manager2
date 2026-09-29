@@ -10,7 +10,7 @@
 
 ### Task List
 
-![Task List](screenshots/task-list.png)
+![Task List](screenshots/tasklist.png)
 
 ### Edit Task
 
