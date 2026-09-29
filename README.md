@@ -6,21 +6,21 @@
 * **Student Name:** Kingsly Bryan A. Tan
 * **Course & Year:** BSIT - 2nd Year
 * **Database Used:** MySQL
-* **Local Environment:** XAMPP (Apache and MySQL)
+* **Local Environment:** XAMPP
 
-## Project Overview
+## Project Description
 
-Personal Task Manager is a Laravel web application for managing personal tasks. The system allows users to add, view, edit, update the status, and delete tasks.
+Personal Task Manager is a simple Laravel project that I made to help manage tasks. It allows the user to add tasks, view tasks, edit them, change their status, and delete them.
 
 ## Features
 
 * Add Task
-* View Tasks
+* View Task
 * Edit Task
 * Delete Task
-* Update Status (Pending / Completed)
-* Task Description
-* Due Date
+* Change Status
+* Add Description
+* Add Due Date
 * Dashboard Counters
 
 ## Technologies Used
@@ -37,46 +37,46 @@ Personal Task Manager is a Laravel web application for managing personal tasks. 
 
 ### 1. Open the System
 
-The user opens the Personal Task Manager and sees the dashboard and task list.
+When the system is opened, the dashboard shows the task list and the task counters.
 
 ### 2. Add a Task
 
-The user clicks **Add New Task** and enters the task name, description, status, and due date. After submitting the form, the task is saved in the MySQL database.
+The user clicks **Add New Task** and enters the task name, description, status, and due date. After clicking the submit button, the task is saved in the database.
 
 ### 3. View Tasks
 
-The saved task appears in the task list. The dashboard shows the total, pending, and completed task counters.
+The added task will appear in the task list. The dashboard also shows the number of total, pending, and completed tasks.
 
 ### 4. Edit a Task
 
-The user clicks **Edit** and changes the task information. After saving, the updated information is stored in the database.
+The user can click **Edit** to change the information of a task. After saving, the changes will appear in the task list.
 
-### 5. Update Status
+### 5. Change Status
 
-The user can change the task status between **Pending** and **Completed**.
+The user can change the task status from **Pending** to **Completed**.
 
 ### 6. Delete a Task
 
-The user can delete a task when it is no longer needed.
+The user can click **Delete** to remove a task from the list.
 
-## System Flow
+## Laravel Flow
+
+This is how the main parts of the project work together:
 
 ```text
 User
  ↓
-Blade View
+Blade
  ↓
 Route
  ↓
-TaskController
+Controller
  ↓
-Task Model
+Model
  ↓
-MySQL Database
+MySQL
  ↓
-Task Model
- ↓
-Blade View
+Blade
  ↓
 User
 ```
@@ -85,7 +85,7 @@ User
 
 ### 1. Routes
 
-The routes are located in:
+File:
 
 ```text
 routes/web.php
@@ -102,11 +102,11 @@ use App\Http\Controllers\TaskController;
 Route::resource('tasks', TaskController::class);
 ```
 
-The resource route creates the routes needed for adding, viewing, editing, updating, and deleting tasks.
+The route connects the website pages to the TaskController.
 
 ### 2. Task Model
 
-The model is located in:
+File:
 
 ```text
 app/Models/Task.php
@@ -132,11 +132,11 @@ class Task extends Model
 }
 ```
 
-The model allows the application to work with the `tasks` table in MySQL.
+The model is used to work with the task data in MySQL.
 
 ### 3. Task Controller
 
-The controller is located in:
+File:
 
 ```text
 app/Http/Controllers/TaskController.php
@@ -232,14 +232,14 @@ class TaskController
 }
 ```
 
+The controller handles the main actions of the system like adding, viewing, editing, updating, and deleting tasks.
+
 ### 4. Database Migration
 
-The migration creates the `tasks` table.
-
-Location:
+File:
 
 ```text
-database/migrations/
+database/migrations/create_tasks_table.php
 ```
 
 Code:
@@ -256,17 +256,17 @@ Schema::create('tasks', function (Blueprint $table) {
 });
 ```
 
-The table stores the task name, description, status, due date, and timestamps.
+This code creates the `tasks` table in MySQL.
 
 ### 5. Blade View
 
-The main task page is located in:
+Main file:
 
 ```text
 resources/views/tasks/index.blade.php
 ```
 
-Example of displaying the tasks:
+Example:
 
 ```php
 @foreach($tasks as $task)
@@ -274,22 +274,22 @@ Example of displaying the tasks:
 @endforeach
 ```
 
-Blade is used to display the task information on the website.
+Blade is used to show the task information on the website.
 
-## CRUD Operations
+## CRUD
 
-The system uses CRUD operations:
+The project uses CRUD:
 
-| CRUD   | System Function           |
-| ------ | ------------------------- |
-| Create | Add Task                  |
-| Read   | View Tasks                |
-| Update | Edit Task / Update Status |
-| Delete | Delete Task               |
+| CRUD   | What it does  |
+| ------ | ------------- |
+| Create | Add a task    |
+| Read   | View tasks    |
+| Update | Edit a task   |
+| Delete | Delete a task |
 
 ## Database
 
-The system uses **MySQL**.
+The database used for this project is **MySQL**.
 
 Database name:
 
@@ -297,13 +297,13 @@ Database name:
 task_manager
 ```
 
-Main table:
+Table:
 
 ```text
 tasks
 ```
 
-The `tasks` table contains:
+The table contains:
 
 ```text
 id
@@ -343,29 +343,25 @@ updated_at
 
 ## System Outputs
 
-### Adding a Task
+### Add Task
 
-After the user submits the Add New Task form, the new task appears in the task list.
+The task is added and shown in the task list.
 
-### Viewing Tasks
+### Edit Task
 
-The task list displays the saved tasks together with their description, status, and due date.
+The task information is updated after editing.
 
-### Editing a Task
+### Completed Task
 
-After editing a task, the updated information appears in the task list.
+The task status changes from Pending to Completed.
 
-### Updating Task Status
+### Delete Task
 
-The task status can be changed from **Pending** to **Completed**.
+The selected task is removed from the task list.
 
-### Deleting a Task
+### Dashboard
 
-After deleting a task, the selected task is removed from the task list.
-
-### Dashboard Counters
-
-The dashboard displays the total number of tasks and the number of pending and completed tasks.
+The dashboard shows the total, pending, and completed tasks.
 
 ## Project Structure
 
@@ -376,7 +372,6 @@ Personal-Task-Manager-Laravel/
 │   ├── Http/
 │   │   └── Controllers/
 │   │       └── TaskController.php
-│   │
 │   └── Models/
 │       └── Task.php
 │
@@ -402,11 +397,11 @@ Personal-Task-Manager-Laravel/
 
 ## How to Run the Project
 
-### 1. Start MySQL
+### Step 1: Start MySQL
 
 Make sure the **MySQL267** service is running.
 
-### 2. Open Command Prompt
+### Step 2: Open Command Prompt
 
 Go to the project folder:
 
@@ -414,7 +409,7 @@ Go to the project folder:
 cd /d "C:\Users\kings\OneDrive\Desktop\Personal-Task-Manager-Laravel"
 ```
 
-### 3. Start Laravel
+### Step 3: Start Laravel
 
 Run:
 
@@ -422,40 +417,20 @@ Run:
 set PATH=C:\xampp\php;%PATH% && php artisan serve
 ```
 
-### 4. Open the Website
+### Step 4: Open the Website
 
-Open a browser and go to:
+Open your browser and enter:
 
 ```text
 http://127.0.0.1:8000/tasks
 ```
 
-### 5. Use the System
+### Step 5: Use the System
 
-The user can add, view, edit, update the status, and delete tasks.
+After opening the website, I can add, view, edit, change the status, and delete tasks.
 
-## Laravel Flow
-
-```text
-Routes
-   ↓
-Controller
-   ↓
-Model
-   ↓
-MySQL Database
-   ↓
-Blade
-```
-
-* **Routes** handle the URLs and requests.
-* **Controller** handles the system logic.
-* **Model** communicates with the database.
-* **MySQL** stores the task information.
-* **Blade** displays the system interface.
-
-## Notes for Submission
+## Notes
 
 The `vendor` folder and `.env` file are not included in the repository.
 
-The `vendor` folder is generated by Composer, while the `.env` file contains local application and database settings.
+The `vendor` folder is generated by Composer, while `.env` contains the local database and application settings.
